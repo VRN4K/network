@@ -1,16 +1,10 @@
 import com.codes.BergerCode;
 import com.codes.ParityChecking;
 
-import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader d = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args){
         System.out.println("1.- Проверка четности\n2.- Код Бергера \n3.- Код Хемминга \n Введите номер операции:");
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -38,9 +32,11 @@ public class Main {
                 parityChecking.execute(massive);
                 break;
             case 2:
+                BergerCode bergerCode = new BergerCode();
+                bergerCode.execute(massive);
                 break;
             case 3:
-                BergerCode bergerCode = new BergerCode();
+
 
                 break;
             default:
