@@ -3,6 +3,8 @@ package com.codes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 import static com.utils.*;
 
 public class BergerCode {
@@ -11,20 +13,20 @@ public class BergerCode {
     private int[] massiveInversion = new int[3];
 
 
-    public void execute(int[] message, int errorCount) {
+    public void execute(List<Integer> message, int errorCount) {
         massiveCheck = binary(oneCount(message));
 
-        System.out.println("Двоичное представление количества единиц в сообщении:");
+        System.out.print("Двоичное представление количества единиц в сообщении:");
         for (int i : massiveCheck) {
             System.out.print(i);
         }
         System.out.println();
 
         //Склеиваем полученное сообщение и массив с количеством единиц
-        for (int i = 4, j = 0; i < 7; i++, j++) {
-            message[i] = inversion(massiveCheck[j]);
+        for (int value : massiveCheck) {
+            message.add(inversion(value));
         }
-        System.out.print("Полученное после склейки сообщение:");
+        System.out.print("Полученное после склейки и инвертации 3 последних бит сообщение:");
         for (int i : message) {
             System.out.print(i);
         }
@@ -33,8 +35,8 @@ public class BergerCode {
         //Генирируем ошибки
         if (errorCount != 0) {
             while (errorCount != 0) {
-                int errorPlace = rand(0, 6);
-                message[errorPlace] = inversion(message[errorPlace]);
+                int errorPlace = rand(0, 4);
+                message.set(errorPlace, inversion(message.get(errorPlace)));
                 logger.info(String.format("Ошибка сгенерирована на позиции %1$s", errorPlace + 1));
                 errorCount--;
             }

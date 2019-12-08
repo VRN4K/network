@@ -1,28 +1,25 @@
 package com;
 
+import java.util.List;
 import java.util.Random;
 
 public class utils {
     private Random random = new Random();
 
     public static int inversion(int bit) {
-        if (bit == 0) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return Math.abs(bit-1);
     }
 
     public static int rand(int min, int max) {
         return (int) (Math.random() * ((max - min) + 1)) + min;
     }
 
-    public static int XOR(int[] massive, int n) {
-        int fifthBit = massive[0];
+    public static int XOR(List<Integer> massive, int n) {
+        int bit = massive.get(0);
         for (int i = 1; i < n; i++) {
-            fifthBit = fifthBit ^ massive[i];
+            bit = bit ^ massive.get(i);
         }
-        return fifthBit;
+        return bit;
     }
 
     public static int charToBin(char binChar) {
@@ -46,10 +43,10 @@ public class utils {
         return massive;
     }
 
-    public static int oneCount(int[] massive) {
+    public static int oneCount(List<Integer> massive) {
         int count = 0;
         for (int i = 0; i < 4;i++) {
-            if (massive[i] == 1) {
+            if (massive.get(i) == 1) {
                 count++;
             }
         }
