@@ -8,10 +8,10 @@ import static com.utils.*;
 public class BergerCode {
     private Logger logger = LoggerFactory.getLogger(BergerCode.class);
     private int[] massiveCheck = new int[3];
-    private int firstError = rand(0, 6);
-    private int secondError = rand(0, 6);
+    private int[] massiveInversion = new int[3];
 
-    public void execute(int[] message) {
+
+    public void execute(int[] message, int errorCount) {
         massiveCheck = binary(oneCount(message));
 
         System.out.println("Двоичное представление количества единиц в сообщении:");
@@ -22,7 +22,7 @@ public class BergerCode {
 
         //Склеиваем полученное сообщение и массив с количеством единиц
         for (int i = 4, j = 0; i < 7; i++, j++) {
-            message[i] = massiveCheck[j];
+            message[i] = inversion(massiveCheck[j]);
         }
         System.out.print("Полученное после склейки сообщение:");
         for (int i : message) {
@@ -31,22 +31,28 @@ public class BergerCode {
         System.out.println();
 
         //Генирируем ошибки
-        message[firstError] = inversion(message[firstError]);
-        logger.info(String.format("Ошибка сгенерированна на позиции %1$s", firstError));
-        message[secondError] = inversion(message[secondError]);
-        logger.info(String.format("Ошибка сгенерированна на позиции %1$s", secondError));
+        if (errorCount != 0) {
+            while (errorCount != 0) {
+                int errorPlace = rand(0, 6);
+                message[errorPlace] = inversion(message[errorPlace]);
+                logger.info(String.format("Ошибка сгенерирована на позиции %1$s", errorPlace + 1));
+                errorCount--;
+            }
+        } else {
+            logger.info("Ошибка не сгенерирована!");
+        }
 
-        System.out.print("Сообщение после искажения:");
+        System.out.print("Сообщение:");
         for (int i : message) {
             System.out.print(i);
         }
+        massiveInversion = binary(oneCount(message));
 
-        massiveCheck = binary(oneCount(message));
-       if(isSame(message,massiveCheck)){
-           logger.info("Передача сообщения успешно завершена");
-       }else {
-           logger.error("Сообщение искажено!");
-       }
+        if (isSame(massiveInversion, massiveCheck)) {
+            logger.info("Передача сообщения успешно завершена");
+        } else {
+            logger.error("Сообщение искажено!");
+        }
 
     }
 

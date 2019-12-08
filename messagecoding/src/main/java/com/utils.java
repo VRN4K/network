@@ -48,20 +48,18 @@ public class utils {
 
     public static int oneCount(int[] massive) {
         int count = 0;
-        for (int i : massive) {
-            if (i == 1) {
+        for (int i = 0; i < 4;i++) {
+            if (massive[i] == 1) {
                 count++;
             }
-
         }
-
         return count;
     }
 
     public static boolean isSame(int[] message, int[] check) {
         int countSame = 0;
-        for (int i = 4, j = 0; i < 6; i++, j++) {
-            if (message[i] == check[j]) {
+        for (int i = 0; i < 3; i++) {
+            if (message[i] == check[i]) {
                 countSame++;
             }
         }

@@ -6,29 +6,31 @@ import org.slf4j.LoggerFactory;
 import static com.utils.*;
 
 public class ParityChecking {
-    private Logger logger = LoggerFactory.getLogger(ParityChecking.class);
-    private int errorMissing = rand(0, 1);
+    private static Logger logger = LoggerFactory.getLogger(ParityChecking.class);
 
-    public void execute(int[] message) {
+    public void execute(int[] message, int errorCount) {
         message[4] = XOR(message, 4);
         System.out.println("Пятый бит: " + message[4]);
 
-        if (errorMissing == 0) {
-            int errorPlace = rand(0, 4);
-            message[errorPlace] = inversion(message[errorPlace]);
-            logger.info("Ошибка сгенерирована!");
+        if (errorCount != 0) {
+            while (errorCount != 0) {
+                int errorPlace = rand(0, 4);
+                message[errorPlace] = inversion(message[errorPlace]);
+                logger.info(String.format("Ошибка сгенерирована на позиции %1$s", errorPlace+1));
+                errorCount--;
+            }
         } else {
             logger.info("Ошибка не сгенерирована!");
         }
 
-        message[5] = XOR(message, 5);
-        if (message[5] == 1) {
+        message[5] = XOR(message, 4);
+        if (message[5] != message[4]) {
             System.out.println("Сообщение было искажено!");
-            logger.error(String.format("%1$s", message[5]));
+            logger.error("1");
 
         } else {
             System.out.println("Передача файла успешно завершена");
-            logger.info(String.format("%1$s", message[5]));
+            logger.info("0");
         }
         System.out.print("Полученное сообщение:");
         for (int i : message) {
