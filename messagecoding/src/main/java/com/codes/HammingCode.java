@@ -38,7 +38,7 @@ public class HammingCode {
         } else {
             logger.error("Сообщение было искажено");
         }
-
+        System.out.println("Конечное сообщение:" + message.toString());
 
     }
 }

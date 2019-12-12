@@ -28,33 +28,26 @@ public class Syndrome {
         if (syndrome1 == 0) {
             if (syndrome2 == 0) {
                 if (syndrome3 == 1) {
-                    return 6;
-                }
+                    return 6; }
             } else {
                 if (syndrome3 == 0) {
                     return 5;
                 } else {
                     return 3;
-                }
-            }
-        } else {
+                }}} else {
             if (syndrome2 == 0) {
                 if (syndrome3 == 0) {
                     return 4;
                 } else {
                     return 0;
-                }
-            } else {
+                } } else {
                 if (syndrome3 == 0) {
                     return 2;
                 } else {
                     return 1;
-                }
-            }
-        }
+                } } }
         return 7;
-    }
-}
+    }}
 
 
 

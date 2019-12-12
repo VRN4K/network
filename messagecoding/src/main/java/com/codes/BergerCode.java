@@ -26,11 +26,7 @@ public class BergerCode {
         for (int value : massiveCheck) {
             message.add(inversion(value));
         }
-        System.out.print("Полученное после склейки и инвертации 3 последних бит сообщение:");
-        for (int i : message) {
-            System.out.print(i);
-        }
-        System.out.println();
+        System.out.println("Полученное после склейки и инвертации 3 последних бит сообщение:" + message.toString() );
 
         //Генирируем ошибки
         if (errorCount != 0) {
@@ -44,10 +40,8 @@ public class BergerCode {
             logger.info("Ошибка не сгенерирована!");
         }
 
-        System.out.print("Сообщение:");
-        for (int i : message) {
-            System.out.print(i);
-        }
+        System.out.println("Сообщение:" + message.toString());
+
         massiveInversion = binary(oneCount(message));
 
         if (isSame(massiveInversion, massiveCheck)) {

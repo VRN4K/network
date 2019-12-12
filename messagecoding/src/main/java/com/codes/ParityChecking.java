@@ -29,7 +29,6 @@ public class ParityChecking {
         int val = XOR(message, message.size() - 1);
         if (message.get(message.size() - 1) != val) {
             System.out.println("Сообщение было искажено!");
-            result = false;
             logger.error("1");
 
         } else {
@@ -37,10 +36,7 @@ public class ParityChecking {
             result = true;
             logger.info("0");
         }
-        System.out.print("Полученное сообщение:");
-        for (int i : message) {
-            System.out.print(String.format("%1$s", i));
-        }
+        System.out.println("Полученное сообщение:" + message.toString());
         return result;
     }
 }
