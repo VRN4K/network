@@ -49,15 +49,15 @@ public class Database {
                 ")");
     }
 
-//    public static void update(Book book) throws SQLException {
-//        Statement statement = getDbConnection().createStatement();
-//        statement.execute("UPDATE book SET title='" + book.getTitle() + "'," +
-//                " author='" + book.getAuthor() +
-//                "', pages='" + book.getPages() + "'," +
-//                " genre='" + book.getGenre() + "'," +
-//                " year ='" + book.getYear() +
-//                "' WHERE id='" + book.getId() + "'");
-//    }
+    public static void update(Computer computer) throws SQLException {
+        Statement statement = getDbConnection().createStatement();
+//        statement.execute("UPDATE book SET title='" + computer.getTitle() + "'," +
+//                " author='" + computer.getAuthor() +
+//                "', pages='" + computer.getPages() + "'," +
+//                " genre='" + computer.getGenre() + "'," +
+//                " year ='" + computer.getYear() +
+//                "' WHERE id='" + computer.getId() + "'");
+    }
 
     public static List<Computer> getList() throws SQLException {
         List<Computer> list = new ArrayList<>();
