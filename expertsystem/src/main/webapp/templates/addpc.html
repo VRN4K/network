@@ -140,7 +140,7 @@
 <script>
     function addPC(){
         var myRequest = new XMLHttpRequest();
-        myRequest.open('POST', 'Servlet');
+        myRequest.open('POST', 'http://localhost:8081/expertsystem_war_exploded/Servlet');
         var json = '';
         myRequest.onreadystatechange = function () {
             if (myRequest.readyState != 4) return;
@@ -149,17 +149,17 @@
             };
         }
         json = {
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value,
-            '': document.getElementById("").value
+            'pc_name': document.getElementById("pc_name").value,
+            'pc_price': document.getElementById("pc_price").value,
+            'cpu_family': document.getElementById("cpu_family").value,
+            'form_factor': document.getElementById("form_factor").value,
+            'ssd_size': document.getElementById("ssd_size").value,
+            'pc_os': document.getElementById("pc_os").value,
+            'gpu_fabricator': document.getElementById("gpu_fabricator").value,
+            'core_amount': document.getElementById("core_amount").value,
+            'pc_fabricator': document.getElementById("pc_fabricator").value,
+            'purpose': document.getElementById("purpose").value,
+            'ram_size': document.getElementById("ram_size").value
         };
         myRequest.send(JSON.stringify(json));
     }
