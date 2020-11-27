@@ -18,16 +18,17 @@ public class ComputerRepository {
         for (Computer computer: list) {
             Map<String,String> map = new HashMap<>();
             map.put("pc_id", computer.getPc_id());
-            map.put("purpose",computer.getPurpose());
+            map.put("pc_name", computer.getPc_name());
+            map.put("pc_price",computer.getPc_price());
             map.put("cpu_family",computer.getCpu_family());
-            map.put("ram_size",computer.getRam_size());
+            map.put("form_factor",computer.getForm_factor());
+            map.put("ssd_size",computer.getSsd_size());
             map.put("pc_os",computer.getPc_os());
             map.put("gpu_fabricator", computer.getGpu_fabricator());
-            map.put("pc_price",computer.getPc_price());
-            map.put("cpu_fabricator",computer.getCpu_fabricator());
             map.put("core_amount", computer.getCore_amount());
-            map.put("ssd_size",computer.getSsd_size());
             map.put("pc_fabricator",computer.getPc_fabricator());
+            map.put("purpose",computer.getPurpose());
+            map.put("ram_size",computer.getRam_size());
             mapList.add(map);
         }
         return gson.toJson(mapList);

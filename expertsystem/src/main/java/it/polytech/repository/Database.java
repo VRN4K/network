@@ -5,6 +5,7 @@ import it.polytech.model.Computer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Database {
 
@@ -34,19 +35,20 @@ public class Database {
 
     public static void add(Computer computer) throws SQLException {
         Statement statement = getDbConnection().createStatement();
-        statement.execute("INSERT INTO computers (pc_id, purpose, cpu_family, ram_size, pc_os, gpu_fabricator, pc_price," +
-                "cpu_fabricator, core_amount, ssd_size, pc_fabricator) " +
-                "VALUES ("+ "'" + computer.getPc_id() + "'," +
-                "'" + computer.getPurpose()+ "'," +
+        statement.execute("INSERT INTO computers (pc_id,  pc_name,  pc_price,  cpu_family,  form_factor,  ssd_size,  pc_os," +
+                "gpu_fabricator,  core_amount,  pc_fabricator,  purpose,  ram_size) VALUES ("+
+                "'" +  UUID.randomUUID().toString() + "'," +
+                "'" + computer.getPc_name() + "'," +
+                "'" + computer.getPc_price() + "'," +
                 "'" + computer.getCpu_family() + "'," +
-                "'" + computer.getRam_size() + "'," +
+                "'" + computer.getForm_factor() + "'," +
+                "'" + computer.getSsd_size() + "'," +
                 "'" + computer.getPc_os() + "'," +
                 "'" + computer.getGpu_fabricator() + "'," +
-                "'" + computer.getPc_price() + "'," +
-                "'" + computer.getCpu_fabricator() + "'," +
                 "'" + computer.getCore_amount() + "'," +
-                "'" + computer.getSsd_size() + "'" +
-                ")");
+                "'" + computer.getPc_fabricator() + "'," +
+                "'" + computer.getPurpose()+ "'," +
+                "'" + computer.getRam_size() + "')");
     }
 
     public static void update(Computer computer) throws SQLException {
@@ -74,7 +76,8 @@ public class Database {
                     resultSet.getString(8),
                     resultSet.getString(9),
                     resultSet.getString(10),
-                    resultSet.getString(11)
+                    resultSet.getString(11),
+                    resultSet.getString(12)
             ));
         }
         return list;

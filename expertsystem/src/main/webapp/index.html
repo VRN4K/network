@@ -20,7 +20,7 @@
 </nav>
 
 <div class="container col-md-7 mb-2">
-    <div id="0" class="hidden">
+    <div id="0">
         <h4  class="mb-3">Введите диапазон приемлемой для вас цены.</h4>
         <div class="col-md-6 mb-3">
             <label for="pc_price_start">От</label>
@@ -113,7 +113,7 @@
         <button type="button" onclick="sendChoice('Alienware')" class="btn btn-dark col-md-2 mb-4">Alienware</button>
         <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
-    <div id="8">
+    <div id="8" class="hidden">
         <h4  class="mb-3">Вы ищите игровой ПК?</h4>
         <button type="button" onclick="sendChoice('Игровые')" class="btn btn-dark col-md-2 mb-4">Да</button>
         <button type="button" onclick="sendChoice('Личное использование')" class="btn btn-dark col-md-2 mb-4">Нет</button>
@@ -136,15 +136,16 @@ function sendChoice(choice){
     array[counter]=choice;
     document.getElementById(""+ counter).classList.add("hidden");
     counter++;
-    document.getElementById(""+ counter).classList.remove("hidden");
     if (counter == 9){
         send();
+    }else{
+        document.getElementById(""+ counter).classList.remove("hidden");
     }
 }
 
 function send(){
     var myRequest = new XMLHttpRequest();
-    myRequest.open('GET', 'http://localhost:8081/expertsystem_war_exploded/Servlet');
+    myRequest.open('POST', 'http://localhost:8081/expertsystem_war_exploded/Servlet');
     var json = '';
     myRequest.onreadystatechange = function () {
         if (myRequest.readyState != 4) return;

@@ -140,7 +140,7 @@
 <script>
     function addPC(){
         var myRequest = new XMLHttpRequest();
-        myRequest.open('POST', 'http://localhost:8081/expertsystem_war_exploded/Servlet');
+        myRequest.open('POST', 'http://localhost:8081/expertsystem_war_exploded/AdminServlet');
         var json = '';
         myRequest.onreadystatechange = function () {
             if (myRequest.readyState != 4) return;

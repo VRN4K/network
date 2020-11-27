@@ -1,62 +1,66 @@
 package it.polytech.model;
 
-import java.util.UUID;
-
 public class Computer {
     String pc_id;
-    String purpose;
+    String pc_name;
+    String pc_price;
     String cpu_family;
-    String ram_size;
+    String form_factor;
+    String ssd_size;
     String pc_os;
     String gpu_fabricator;
-    String pc_price;
-    String cpu_fabricator;
     String core_amount;
-    String ssd_size;
     String pc_fabricator;
+    String purpose;
+    String ram_size;
 
-    public Computer(String pc_id, String purpose, String cpu_family, String ram_size, String pc_os,
-                    String gpu_fabricator, String pc_price, String cpu_fabricator, String core_amount,
-                    String ssd_size, String pc_fabricator) {
+    public Computer(String pc_id, String pc_name, String pc_price, String cpu_family, String form_factor, String ssd_size, String pc_os,
+                    String gpu_fabricator, String core_amount, String pc_fabricator, String purpose, String ram_size) {
         this.pc_id = pc_id;
-        this.purpose = purpose;
+        this.pc_name = pc_name;
+        this.pc_price = pc_price;
         this.cpu_family = cpu_family;
-        this.ram_size = ram_size;
+        this.form_factor = form_factor;
+        this.ssd_size = ssd_size;
         this.pc_os = pc_os;
         this.gpu_fabricator = gpu_fabricator;
-        this.pc_price = pc_price;
-        this.cpu_fabricator = cpu_fabricator;
         this.core_amount = core_amount;
-        this.ssd_size = ssd_size;
         this.pc_fabricator = pc_fabricator;
+        this.purpose = purpose;
+        this.ram_size = ram_size;
     }
 
-    public Computer(String purpose, String cpu_family, String ram_size, String pc_os, String gpu_fabricator,
-                    String pc_price, String cpu_fabricator, String core_amount, String ssd_size,
-                    String pc_fabricator) {
-        this.pc_id = UUID.randomUUID().toString();
-        this.purpose = purpose;
+    public Computer(String pc_price, String cpu_family, String form_factor, String ssd_size, String pc_os,
+                    String gpu_fabricator, String core_amount, String pc_fabricator, String purpose, String ram_size) {
+        this.pc_price = pc_price;
         this.cpu_family = cpu_family;
-        this.ram_size = ram_size;
+        this.form_factor = form_factor;
+        this.ssd_size = ssd_size;
         this.pc_os = pc_os;
         this.gpu_fabricator = gpu_fabricator;
-        this.pc_price = pc_price;
-        this.cpu_fabricator = cpu_fabricator;
         this.core_amount = core_amount;
-        this.ssd_size = ssd_size;
         this.pc_fabricator = pc_fabricator;
+        this.purpose = purpose;
+        this.ram_size = ram_size;
     }
 
     public String getPc_id() {
         return pc_id;
     }
-
-    public String getPurpose() {
-        return purpose;
+    public String getPc_name() {
+        return pc_name;
     }
 
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
+    public void setPc_name(String pc_name) {
+        this.pc_name = pc_name;
+    }
+
+    public String getPc_price() {
+        return pc_price;
+    }
+
+    public void setPc_price(String pc_price) {
+        this.pc_price = pc_price;
     }
 
     public String getCpu_family() {
@@ -67,12 +71,20 @@ public class Computer {
         this.cpu_family = cpu_family;
     }
 
-    public String getRam_size() {
-        return ram_size;
+    public String getForm_factor() {
+        return form_factor;
     }
 
-    public void setRam_size(String ram_size) {
-        this.ram_size = ram_size;
+    public void setForm_factor(String form_factor) {
+        this.form_factor = form_factor;
+    }
+
+    public String getSsd_size() {
+        return ssd_size;
+    }
+
+    public void setSsd_size(String ssd_size) {
+        this.ssd_size = ssd_size;
     }
 
     public String getPc_os() {
@@ -91,22 +103,6 @@ public class Computer {
         this.gpu_fabricator = gpu_fabricator;
     }
 
-    public String getPc_price() {
-        return pc_price;
-    }
-
-    public void setPc_price(String pc_price) {
-        this.pc_price = pc_price;
-    }
-
-    public String getCpu_fabricator() {
-        return cpu_fabricator;
-    }
-
-    public void setCpu_fabricator(String cpu_fabricator) {
-        this.cpu_fabricator = cpu_fabricator;
-    }
-
     public String getCore_amount() {
         return core_amount;
     }
@@ -115,19 +111,27 @@ public class Computer {
         this.core_amount = core_amount;
     }
 
-    public String getSsd_size() {
-        return ssd_size;
-    }
-
-    public void setSsd_size(String ssd_size) {
-        this.ssd_size = ssd_size;
-    }
-
     public String getPc_fabricator() {
         return pc_fabricator;
     }
 
     public void setPc_fabricator(String pc_fabricator) {
         this.pc_fabricator = pc_fabricator;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public String getRam_size() {
+        return ram_size;
+    }
+
+    public void setRam_size(String ram_size) {
+        this.ram_size = ram_size;
     }
 }
