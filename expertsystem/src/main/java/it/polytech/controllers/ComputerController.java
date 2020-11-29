@@ -16,8 +16,13 @@ public class ComputerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String json = req.getReader().readLine();
-        System.out.println(json);
         Computer computer = new Gson().fromJson(json, Computer.class);
+        System.out.println(json);
+        try {
+            ComputerRepository.findComputers(computer);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 }

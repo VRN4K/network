@@ -30,7 +30,7 @@
             <label for="pc_price_end">До</label>
             <input type="text" class="form-control" id="pc_price_end" placeholder="" value="">
         </div>
-        <button type="button" onclick="sendChoice(''+ pc_price_start.value + '-' + pc_price_end.value)"
+        <button type="button" onclick="sendChoice('0', pc_price_start.value + '-' + pc_price_end.value)"
                 class="btn btn-dark col-md-2 mb-4">Подтвердить</button>
     </div>
     <div id="1" class="hidden">
@@ -45,16 +45,16 @@
             <option>AMD Ryzen 5</option>
             <option>AMD Ryzen 7</option>
         </select>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-4 mb-8">Не знаю</button>
-        <button type="button" onclick="sendChoice(''+cpu_family.value)" class="btn btn-dark col-md-4 mb-8">Подтвердить выбор</button>
+        <button type="button" onclick="sendChoice('1' , 'none')" class="btn btn-dark col-md-4 mb-8">Не знаю</button>
+        <button type="button" onclick="sendChoice('1', cpu_family.value)" class="btn btn-dark col-md-4 mb-8">Подтвердить выбор</button>
     </div>
     <div id="2" class="hidden">
         <h4  class="mb-3">Какой форм-фактор корпуса вы хотите для вашего будущего ПК ?</h4>
-        <button type="button" onclick="sendChoice('Micro-Tower')" class="btn btn-dark col-md-2 mb-4">Micro-Tower</button>
-        <button type="button" onclick="sendChoice('Midi-Tower')" class="btn btn-dark col-md-2 mb-4">Midi-Tower</button>
-        <button type="button" onclick="sendChoice('Mini-Tower')" class="btn btn-dark col-md-2 mb-4">Mini-Tower</button>
-        <button type="button" onclick="sendChoice('Slim')" class="btn btn-dark col-md-2 mb-4">Slim</button>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
+        <button type="button" onclick="sendChoice('2','Micro-Tower')" class="btn btn-dark col-md-2 mb-4">Micro-Tower</button>
+        <button type="button" onclick="sendChoice('2','Midi-Tower')" class="btn btn-dark col-md-2 mb-4">Midi-Tower</button>
+        <button type="button" onclick="sendChoice('2','Mini-Tower')" class="btn btn-dark col-md-2 mb-4">Mini-Tower</button>
+        <button type="button" onclick="sendChoice('2','Slim')" class="btn btn-dark col-md-2 mb-4">Slim</button>
+        <button type="button" onclick="sendChoice('2','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
     <div id="3" class="hidden">
         <h4  class="mb-3">Введите предпочитаемый объем SSD диска.</h4>
@@ -66,15 +66,15 @@
             <label for="ssd_end">До</label>
             <input type="text" class="form-control" id="ssd_end" placeholder="" value="">
         </div>
-        <button type="button" onclick="sendChoice(''+ ssd_start.value + '-' + ssd_end.value)"
+        <button type="button" onclick="sendChoice('3', ssd_start.value + '-' + ssd_end.value)"
                 class="btn btn-dark col-md-2 mb-4">Подтвердить</button>
     </div>
     <div id="4" class="hidden">
         <h4  class="mb-3">Какая ОС требуется вам для работы?</h4>
-        <button type="button" onclick="sendChoice('Windows')" class="btn btn-dark col-md-2 mb-4">Windows</button>
-        <button type="button" onclick="sendChoice('Linux')" class="btn btn-dark col-md-2 mb-4">Linux</button>
-        <button type="button" onclick="sendChoice('Без ОС')" class="btn btn-dark col-md-2 mb-4">Без ОС</button>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
+        <button type="button" onclick="sendChoice('4','Windows')" class="btn btn-dark col-md-2 mb-4">Windows</button>
+        <button type="button" onclick="sendChoice('4','Linux')" class="btn btn-dark col-md-2 mb-4">Linux</button>
+        <button type="button" onclick="sendChoice('4','Без ОС')" class="btn btn-dark col-md-2 mb-4">Без ОС</button>
+        <button type="button" onclick="sendChoice('4','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
     <div id="5" class="hidden">
         <h4  class="mb-3">Какую модель дискретной карты вы предпочитаете?</h4>
@@ -88,71 +88,68 @@
             <option>Nvidia GeForce GTX 1650</option>
             <option>Отсутствует</option>
         </select>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-4 mb-8">Не знаю</button>
-        <button type="button" onclick="sendChoice(''+gpu_fabricator.value)" class="btn btn-dark col-md-4 mb-8">Подтвердить выбор</button>
+        <button type="button" onclick="sendChoice('5','none')" class="btn btn-dark col-md-4 mb-8">Не знаю</button>
+        <button type="button" onclick="sendChoice('5',gpu_fabricator.value)" class="btn btn-dark col-md-4 mb-8">Подтвердить выбор</button>
     </div>
     <div id="6" class="hidden">
         <h4  class="mb-3">Какое количество ядер процессора необходимо для работы?</h4>
-        <button type="button" onclick="sendChoice('2')" class="btn btn-dark col-md-2 mb-4">2</button>
-        <button type="button" onclick="sendChoice('4')" class="btn btn-dark col-md-2 mb-4">4</button>
-        <button type="button" onclick="sendChoice('6')" class="btn btn-dark col-md-2 mb-4">6</button>
-        <button type="button" onclick="sendChoice('8')" class="btn btn-dark col-md-2 mb-4">8</button>
-        <button type="button" onclick="sendChoice('10')" class="btn btn-dark col-md-2 mb-4">10</button>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
+        <button type="button" onclick="sendChoice('6','2')" class="btn btn-dark col-md-2 mb-4">2</button>
+        <button type="button" onclick="sendChoice('6','4')" class="btn btn-dark col-md-2 mb-4">4</button>
+        <button type="button" onclick="sendChoice('6','6')" class="btn btn-dark col-md-2 mb-4">6</button>
+        <button type="button" onclick="sendChoice('6','8')" class="btn btn-dark col-md-2 mb-4">8</button>
+        <button type="button" onclick="sendChoice('6','10')" class="btn btn-dark col-md-2 mb-4">10</button>
+        <button type="button" onclick="sendChoice('6','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
     <div id="7" class="hidden">
         <h4  class="mb-3">Какому производителю вы доверяете?</h4>
-        <button type="button" onclick="sendChoice('Acer')" class="btn btn-dark col-md-2 mb-4">Acer</button>
-        <button type="button" onclick="sendChoice('ASUS')" class="btn btn-dark col-md-2 mb-4">ASUS</button>
-        <button type="button" onclick="sendChoice('Dell')" class="btn btn-dark col-md-2 mb-4">Dell</button>
-        <button type="button" onclick="sendChoice('DEXP')" class="btn btn-dark col-md-2 mb-4">DEXP</button>
-        <button type="button" onclick="sendChoice('HP')" class="btn btn-dark col-md-2 mb-4">HP</button>
-        <button type="button" onclick="sendChoice('Lenovo')" class="btn btn-dark col-md-2 mb-4">Lenovo</button>
-        <button type="button" onclick="sendChoice('MSI')" class="btn btn-dark col-md-2 mb-4">MSI</button>
-        <button type="button" onclick="sendChoice('ZET GAMING')" class="btn btn-dark col-md-2 mb-4">ZET GAMING</button>
-        <button type="button" onclick="sendChoice('Alienware')" class="btn btn-dark col-md-2 mb-4">Alienware</button>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
+        <button type="button" onclick="sendChoice('7','Acer')" class="btn btn-dark col-md-2 mb-4">Acer</button>
+        <button type="button" onclick="sendChoice('7','ASUS')" class="btn btn-dark col-md-2 mb-4">ASUS</button>
+        <button type="button" onclick="sendChoice('7','Dell')" class="btn btn-dark col-md-2 mb-4">Dell</button>
+        <button type="button" onclick="sendChoice('7','DEXP')" class="btn btn-dark col-md-2 mb-4">DEXP</button>
+        <button type="button" onclick="sendChoice('7','HP')" class="btn btn-dark col-md-2 mb-4">HP</button>
+        <button type="button" onclick="sendChoice('7','Lenovo')" class="btn btn-dark col-md-2 mb-4">Lenovo</button>
+        <button type="button" onclick="sendChoice('7','MSI')" class="btn btn-dark col-md-2 mb-4">MSI</button>
+        <button type="button" onclick="sendChoice('7','ZET GAMING')" class="btn btn-dark col-md-2 mb-4">ZET GAMING</button>
+        <button type="button" onclick="sendChoice('7','Alienware')" class="btn btn-dark col-md-2 mb-4">Alienware</button>
+        <button type="button" onclick="sendChoice('7','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
     <div id="8" class="hidden">
         <h4  class="mb-3">Вы ищите игровой ПК?</h4>
-        <button type="button" onclick="sendChoice('Игровые')" class="btn btn-dark col-md-2 mb-4">Да</button>
-        <button type="button" onclick="sendChoice('Личное использование')" class="btn btn-dark col-md-2 mb-4">Нет</button>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
+        <button type="button" onclick="sendChoice('8','Игровые')" class="btn btn-dark col-md-2 mb-4">Да</button>
+        <button type="button" onclick="sendChoice('8','Личное использование')" class="btn btn-dark col-md-2 mb-4">Нет</button>
+        <button type="button" onclick="sendChoice('8','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
     <div id="9" class="hidden">
         <h4  class="mb-3">Какой размер оперативной памяти требуется для работы?</h4>
-        <button type="button" onclick="sendChoice('4')" class="btn btn-dark col-md-2 mb-4">4</button>
-        <button type="button" onclick="sendChoice('8')" class="btn btn-dark col-md-2 mb-4">8</button>
-        <button type="button" onclick="sendChoice('16')" class="btn btn-dark col-md-2 mb-4">16</button>
-        <button type="button" onclick="sendChoice('32')" class="btn btn-dark col-md-2 mb-4">32</button>
-        <button type="button" onclick="sendChoice('none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
+        <button type="button" onclick="sendChoice('9','4')" class="btn btn-dark col-md-2 mb-4">4</button>
+        <button type="button" onclick="sendChoice('9','8')" class="btn btn-dark col-md-2 mb-4">8</button>
+        <button type="button" onclick="sendChoice('9','16')" class="btn btn-dark col-md-2 mb-4">16</button>
+        <button type="button" onclick="sendChoice('9','32')" class="btn btn-dark col-md-2 mb-4">32</button>
+        <button type="button" onclick="sendChoice('9','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
 </div>
 <script>
 let counter=0;
 let array=[];
 
-function sendChoice(choice){
-    array[counter]=choice;
-    document.getElementById(""+ counter).classList.add("hidden");
-    counter++;
-    if (counter == 9){
-        send();
-    }else{
-        document.getElementById(""+ counter).classList.remove("hidden");
-    }
+
+function sendChoice(id,choice){
+
+        array[counter]=choice;
+        document.getElementById(""+ id).classList.add("hidden");
+        counter++;
+        if(counter == 10){
+            send();
+        }else{
+            document.getElementById(""+ counter).classList.remove("hidden");
+        }
 }
 
 function send(){
     var myRequest = new XMLHttpRequest();
     myRequest.open('POST', 'http://localhost:8081/expertsystem_war_exploded/Servlet');
     var json = '';
-    myRequest.onreadystatechange = function () {
-        if (myRequest.readyState != 4) return;
-        if (myRequest.status != 200) {
-            alert(myRequest.status + ': ' + myRequest.statusText);
-        };
-    }
+
     json = {
         'pc_price': array[0],
         'cpu_family': array[1],

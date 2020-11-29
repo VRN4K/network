@@ -13,6 +13,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String json = req.getReader().readLine();
+        System.out.println(json);
         try {
             ComputerRepository.createComputer(json);
         } catch (SQLException throwables) {
