@@ -128,6 +128,29 @@
         <button type="button" onclick="sendChoice('9','none')" class="btn btn-dark col-md-2 mb-4">Не знаю</button>
     </div>
 </div>
+<div id="table" style="margin-left: 150px" class="col-md-7 mb-2 ">
+    <h4>На основании ваших пожеланий могу предложить вам следующие конфигурации ПК:</h4>
+<table class="table" >
+    <thead  class="thead-dark">
+    <tr>
+        <th scope="col">Наименование ПК</th>
+        <th scope="col">Цена</th>
+        <th scope="col">Процессор</th>
+        <th scope="col">Форм-фактор</th>
+        <th scope="col">Размер SSD</th>
+        <th scope="col">ОС</th>
+        <th scope="col">Дискретная карта</th>
+        <th scope="col">Количество ядер процессора</th>
+        <th scope="col">Производитель</th>
+        <th scope="col">Размер оперативной памяти</th>
+    </tr>
+    </thead>
+    <tbody id="list">
+    <tr>
+    </tr>
+    </tbody>
+</table>
+</div>
 <script>
 let counter=0;
 let array=[];
@@ -140,6 +163,7 @@ function sendChoice(id,choice){
         counter++;
         if(counter == 10){
             send();
+            getAll();
         }else{
             document.getElementById(""+ counter).classList.remove("hidden");
         }
@@ -162,9 +186,48 @@ function send(){
         'purpose': array[8],
         'ram_size': array[9]
     };
+
+    myRequest.onreadystatechange = function () {
+        if (myRequest.readyState != 4) return;
+        if (myRequest.status != 200) {
+            alert(myRequest.status + ': ' + myRequest.statusText);
+        } else {
+            try {
+                var books = JSON.parse(myRequest.responseText);
+                console.log(myRequest.response);
+            } catch (e) {
+                alert("Некорректный ответ " + e.message);
+            }
+            show(books)
+        };
+    }
+
     myRequest.send(JSON.stringify(json));
 }
 
+function show(computers) {
+    var computerList = list;
+    while (computerList.firstChild) {
+        computerList.removeChild(computerList.firstChild);
+    }
+
+    computers.forEach(function (computer) {
+        computerList = list.appendChild(document.createElement('tr'));
+        computerList.innerHTML =
+            "<td>" + computer.pc_name + "</td>" +
+            "<td>" + computer.pc_price + "</td>" +
+            "<td>" + computer.cpu_family + "</td>" +
+            "<td>" + computer.form_factor + "</td>" +
+            "<td>" + computer.ssd_size + "</td>" +
+            "<td>" + computer.pc_os + "</td>" +
+            "<td>" + computer.gpu_fabricator + "</td>"+
+            "<td>" + computer.core_amount + "</td>" +
+            "<td>" + computer.pc_fabricator + "</td>" +
+            "<td>" + computer.ram_size + "</td>";
+
+    });
+   document.getElementById("table").classList.remove("hidden");
+}
 </script>
 <!-- FOR BOOTSTRAP -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

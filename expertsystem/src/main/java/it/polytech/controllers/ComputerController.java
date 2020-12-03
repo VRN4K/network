@@ -13,13 +13,16 @@ import java.sql.SQLException;
 
 public class ComputerController extends HttpServlet {
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String json = req.getReader().readLine();
         Computer computer = new Gson().fromJson(json, Computer.class);
         System.out.println(json);
         try {
-            ComputerRepository.findComputers(computer);
+            resp.setHeader("Content-Type","text/plain;charset=UTF-8");
+            resp.getWriter().write(ComputerRepository.findComputers(computer));
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
